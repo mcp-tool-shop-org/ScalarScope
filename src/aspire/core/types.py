@@ -1,8 +1,12 @@
 """Core data types for ASPIRE training."""
 
+from __future__ import annotations
 from dataclasses import dataclass, field
-from typing import Optional, List
+from typing import Optional, List, TYPE_CHECKING
 from .tokens import TokenVector
+
+if TYPE_CHECKING:
+    from ..student.onnx_student_v2 import GenerationStats
 
 
 @dataclass
@@ -28,6 +32,7 @@ class StudentResponse:
     reasoning_trace: str
     confidence: float                     # 0-1, student's self-assessed certainty
     latency_ms: float = 0.0              # How long inference took
+    generation_stats: Optional["GenerationStats"] = None  # Logit-derived stats for V1 critic
 
 
 @dataclass

@@ -56,6 +56,91 @@ class CacheConfig:
 
 
 @dataclass
+class TokenStats:
+    """Per-token generation statistics for critic features."""
+    entropy: float = 0.0       # Shannon entropy of probability distribution
+    margin: float = 0.0        # Difference between top-1 and top-2 probabilities
+    top1_prob: float = 0.0     # Probability of chosen token
+    eos_prob: float = 0.0      # Probability of EOS token
+
+
+@dataclass
+class GenerationStats:
+    """Aggregated statistics from generation for critic features.
+
+    These signals capture model internal uncertainty that text-only
+    features cannot detect. The critic uses these to improve prediction.
+    """
+    # Per-token stats
+    token_stats: List[TokenStats] = field(default_factory=list)
+
+    # Aggregated entropy stats
+    entropy_mean: float = 0.0
+    entropy_std: float = 0.0
+    entropy_max: float = 0.0
+    entropy_min: float = 1e9
+
+    # Aggregated margin stats (top1 - top2)
+    margin_mean: float = 0.0
+    margin_min: float = 1.0    # Lowest margin = most uncertain decision
+
+    # EOS probability tracking
+    eos_prob_max: float = 0.0             # Peak EOS probability
+    eos_prob_mean_last_5: float = 0.0     # Model "wanting to stop"
+
+    # Top-1 probability tracking
+    top1_prob_mean: float = 0.0
+    top1_prob_min: float = 1.0
+
+    # Token-level patterns
+    repeat_bigram_rate: float = 0.0       # Repetition indicator
+    unique_token_ratio: float = 0.0       # Vocabulary diversity
+
+    def compute_aggregates(self, token_ids: List[int], eos_token_id: int):
+        """Compute aggregate statistics from per-token stats."""
+        if not self.token_stats:
+            return
+
+        n = len(self.token_stats)
+
+        # Entropy aggregates
+        entropies = [s.entropy for s in self.token_stats]
+        self.entropy_mean = sum(entropies) / n
+        self.entropy_max = max(entropies)
+        self.entropy_min = min(entropies)
+        if n > 1:
+            variance = sum((e - self.entropy_mean) ** 2 for e in entropies) / (n - 1)
+            self.entropy_std = variance ** 0.5
+
+        # Margin aggregates
+        margins = [s.margin for s in self.token_stats]
+        self.margin_mean = sum(margins) / n
+        self.margin_min = min(margins)
+
+        # EOS probability aggregates
+        eos_probs = [s.eos_prob for s in self.token_stats]
+        self.eos_prob_max = max(eos_probs)
+        if n >= 5:
+            self.eos_prob_mean_last_5 = sum(eos_probs[-5:]) / 5
+        else:
+            self.eos_prob_mean_last_5 = sum(eos_probs) / n
+
+        # Top-1 probability aggregates
+        top1_probs = [s.top1_prob for s in self.token_stats]
+        self.top1_prob_mean = sum(top1_probs) / n
+        self.top1_prob_min = min(top1_probs)
+
+        # Token-level patterns
+        if len(token_ids) >= 2:
+            bigrams = [(token_ids[i], token_ids[i+1]) for i in range(len(token_ids)-1)]
+            unique_bigrams = len(set(bigrams))
+            self.repeat_bigram_rate = 1.0 - (unique_bigrams / len(bigrams)) if bigrams else 0.0
+
+        unique_tokens = len(set(token_ids))
+        self.unique_token_ratio = unique_tokens / len(token_ids) if token_ids else 0.0
+
+
+@dataclass
 class GenerationMetrics:
     """Metrics from a single generation run."""
     prompt_tokens: int = 0
@@ -65,6 +150,9 @@ class GenerationMetrics:
     tokens_per_second: float = 0.0
     used_kv_cache: bool = False
     peak_memory_mb: int = 0
+
+    # Generation stats for critic
+    stats: Optional[GenerationStats] = None
 
     @property
     def time_to_first_token_ms(self) -> float:
@@ -257,6 +345,38 @@ class ONNXStudentV2(StudentModel):
         """Build the full prompt for the model."""
         return f"{self.system_prompt}\n\nQUESTION: {item.prompt}"
 
+    def _compute_token_stats(
+        self,
+        logits: np.ndarray,
+        eos_token_id: int,
+    ) -> TokenStats:
+        """Compute statistics from logits before sampling."""
+        # Compute probabilities (softmax)
+        logits_max = np.max(logits)
+        exp_logits = np.exp(logits - logits_max)
+        probs = exp_logits / np.sum(exp_logits)
+
+        # Entropy: -sum(p * log(p))
+        # Add small epsilon to avoid log(0)
+        log_probs = np.log(probs + 1e-10)
+        entropy = -np.sum(probs * log_probs)
+
+        # Top-1 and top-2 probabilities
+        sorted_probs = np.sort(probs)[::-1]
+        top1_prob = float(sorted_probs[0])
+        top2_prob = float(sorted_probs[1]) if len(sorted_probs) > 1 else 0.0
+        margin = top1_prob - top2_prob
+
+        # EOS probability
+        eos_prob = float(probs[eos_token_id]) if eos_token_id < len(probs) else 0.0
+
+        return TokenStats(
+            entropy=float(entropy),
+            margin=margin,
+            top1_prob=top1_prob,
+            eos_prob=eos_prob,
+        )
+
     def _sample_token(
         self,
         logits: np.ndarray,
@@ -334,7 +454,7 @@ class ONNXStudentV2(StudentModel):
 
         return False
 
-    def _generate_with_cache(self, prompt: str) -> StudentOutputV2:
+    def _generate_with_cache(self, prompt: str, collect_stats: bool = True) -> StudentOutputV2:
         """Generate text using KV-cache for efficiency."""
         start_time = time.perf_counter()
         first_token_time = None
@@ -356,6 +476,9 @@ class ONNXStudentV2(StudentModel):
         self._init_cache_buffers(batch_size=1)
 
         generated_ids = []
+        gen_stats = GenerationStats() if collect_stats else None
+        eos_token_id = self._tokenizer.eos_token_id or 0
+
         input_names = [inp.name for inp in self._session.get_inputs()]
         output_names = [out.name for out in self._session.get_outputs()]
 
@@ -400,6 +523,12 @@ class ONNXStudentV2(StudentModel):
 
         # Sample first token
         next_token_logits = logits[0, -1, :]
+
+        # Collect stats before any modifications
+        if collect_stats and gen_stats is not None:
+            token_stat = self._compute_token_stats(next_token_logits, eos_token_id)
+            gen_stats.token_stats.append(token_stat)
+
         next_token_logits = self._apply_repetition_penalty(
             next_token_logits, generated_ids, self.config.repetition_penalty
         )
@@ -471,6 +600,12 @@ class ONNXStudentV2(StudentModel):
 
             # Sample next token
             next_token_logits = logits[0, -1, :]
+
+            # Collect stats before modifications
+            if collect_stats and gen_stats is not None:
+                token_stat = self._compute_token_stats(next_token_logits, eos_token_id)
+                gen_stats.token_stats.append(token_stat)
+
             next_token_logits = self._apply_repetition_penalty(
                 next_token_logits, generated_ids, self.config.repetition_penalty
             )
@@ -491,6 +626,10 @@ class ONNXStudentV2(StudentModel):
             # Update caches
             self._cache_buffers.update(new_caches)
 
+        # Compute aggregate stats
+        if collect_stats and gen_stats is not None:
+            gen_stats.compute_aggregates(generated_ids, eos_token_id)
+
         # Final decode
         end_time = time.perf_counter()
         raw_text = self._tokenizer.decode(generated_ids, skip_special_tokens=True)
@@ -508,6 +647,7 @@ class ONNXStudentV2(StudentModel):
             total_time_ms=total_time_ms,
             tokens_per_second=tokens_per_sec,
             used_kv_cache=True,
+            stats=gen_stats,
         )
 
         return StudentOutputV2(
@@ -519,7 +659,7 @@ class ONNXStudentV2(StudentModel):
             metrics=metrics,
         )
 
-    def _generate_no_cache(self, prompt: str) -> StudentOutputV2:
+    def _generate_no_cache(self, prompt: str, collect_stats: bool = True) -> StudentOutputV2:
         """Generate text without KV-cache (V1-style fallback)."""
         start_time = time.perf_counter()
         first_token_time = None
@@ -537,6 +677,9 @@ class ONNXStudentV2(StudentModel):
         prompt_len = input_ids.shape[1]
 
         generated_ids = []
+        gen_stats = GenerationStats() if collect_stats else None
+        eos_token_id = self._tokenizer.eos_token_id or 0
+
         current_ids = input_ids.copy()
         current_mask = attention_mask.copy()
 
@@ -554,6 +697,11 @@ class ONNXStudentV2(StudentModel):
 
             logits = outputs[0]
             next_token_logits = logits[0, -1, :]
+
+            # Collect stats before modifications
+            if collect_stats and gen_stats is not None:
+                token_stat = self._compute_token_stats(next_token_logits, eos_token_id)
+                gen_stats.token_stats.append(token_stat)
 
             next_token_logits = self._apply_repetition_penalty(
                 next_token_logits, generated_ids, self.config.repetition_penalty
@@ -588,6 +736,10 @@ class ONNXStudentV2(StudentModel):
                 np.array([[1]], dtype=np.int64)
             ], axis=1)
 
+        # Compute aggregate stats
+        if collect_stats and gen_stats is not None:
+            gen_stats.compute_aggregates(generated_ids, eos_token_id)
+
         end_time = time.perf_counter()
         raw_text = self._tokenizer.decode(generated_ids, skip_special_tokens=True)
         total_time_ms = (end_time - start_time) * 1000
@@ -604,6 +756,7 @@ class ONNXStudentV2(StudentModel):
             total_time_ms=total_time_ms,
             tokens_per_second=tokens_per_sec,
             used_kv_cache=False,
+            stats=gen_stats,
         )
 
         return StudentOutputV2(
@@ -676,6 +829,7 @@ class ONNXStudentV2(StudentModel):
         self,
         item: TrainingItem,
         max_tokens: int = 256,
+        collect_stats: bool = True,
     ) -> StudentResponse:
         """Generate a response for a training item."""
         self._load()
@@ -687,11 +841,14 @@ class ONNXStudentV2(StudentModel):
             prompt = self._build_prompt(item)
 
             if self._supports_kv_cache:
-                output = self._generate_with_cache(prompt)
+                output = self._generate_with_cache(prompt, collect_stats=collect_stats)
             else:
-                output = self._generate_no_cache(prompt)
+                output = self._generate_no_cache(prompt, collect_stats=collect_stats)
 
             confidence = self._extract_confidence(output.raw_text)
+
+            # Extract generation stats from metrics
+            gen_stats = output.metrics.stats if output.metrics else None
 
             return StudentResponse(
                 item_id=item.id,
@@ -699,6 +856,7 @@ class ONNXStudentV2(StudentModel):
                 reasoning_trace=output.reasoning,
                 confidence=confidence,
                 latency_ms=output.generation_time_ms,
+                generation_stats=gen_stats,
             )
         finally:
             self.config.max_new_tokens = original_max
