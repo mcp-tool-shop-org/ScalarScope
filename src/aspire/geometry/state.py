@@ -14,6 +14,12 @@ Scalar dimensions captured:
 The key insight from ML geometry research: training doesn't increase
 dimensionality - it reshapes and compresses it. ASPIRE's "conscience"
 is literally a dimensional collapse from isotropic to task-aligned.
+
+Literature:
+- Neural Collapse: NeurIPS 2024, "The Impact of Geometric Complexity on Neural Collapse"
+- Dimensional Collapse Prevention: NeurIPS 2024, "Preventing Dimensional Collapse in SSL"
+- Effective Dimensionality: Participation ratio from eigenvalue analysis
+See docs/LITERATURE_REVIEW.md Section 1 for full references.
 """
 
 from dataclasses import dataclass, field

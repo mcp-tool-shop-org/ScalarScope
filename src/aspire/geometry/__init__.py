@@ -13,7 +13,15 @@ Key concepts:
 The goal is to make the "conscience formation" process visible.
 """
 
-from .state import StateVector, StateSnapshot
+from .state import (
+    StateVector,
+    StateSnapshot,
+    TokenDimensionStats,
+    CriticState,
+    RevisionState,
+    compute_effective_dimensionality,
+    compute_anisotropy,
+)
 from .trajectory import TrainingTrajectory, TrajectoryMetrics
 from .renderer import (
     GeometryRenderer,
@@ -25,6 +33,11 @@ from .renderer import (
 __all__ = [
     "StateVector",
     "StateSnapshot",
+    "TokenDimensionStats",
+    "CriticState",
+    "RevisionState",
+    "compute_effective_dimensionality",
+    "compute_anisotropy",
     "TrainingTrajectory",
     "TrajectoryMetrics",
     "GeometryRenderer",

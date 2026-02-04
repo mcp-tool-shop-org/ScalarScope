@@ -8,6 +8,13 @@ V1 improvements over V0:
 The key insight is that text features can be gamed (the model can write
 "I'm uncertain" while being internally certain), but logit features
 reflect true model uncertainty that's hard to fake.
+
+Literature:
+- Logit Uncertainty: arXiv 2025 "Estimating LLM Uncertainty with Logits"
+- Entropy/Margin: ACL 2025 "Harmonized Uncertainty Estimation for LLMs"
+- Confidence Neurons: arXiv 2024 "Confidence Regulation Neurons in Language Models"
+- Calibration: ICML 2017 "On Calibration of Modern Neural Networks"
+See docs/LITERATURE_REVIEW.md Sections 6, 10 for full references.
 """
 
 from dataclasses import dataclass, field
