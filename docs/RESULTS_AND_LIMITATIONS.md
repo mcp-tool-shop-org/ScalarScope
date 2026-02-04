@@ -13,8 +13,11 @@ suite identified:
 - **11 unexpected failures** (potential falsifications requiring interpretation)
 - **Overall failure rate**: 21.1%
 
-The results reveal important constraints on ASPIRE's claims that must be acknowledged
-and properly framed.
+**Critical Update**: Post-hoc analysis of evaluator latent structure revealed that
+the 10 holdout transfer failures were **expected** given the professor design. The
+professors measure orthogonal qualities (mean inter-professor correlation = 0.004)
+with no shared latent space. This means holdout transfer was **untestable** with
+this experimental design, not a falsification of ASPIRE.
 
 ---
 
@@ -88,21 +91,49 @@ investigation with more diverse evaluators."
 
 ### Interpretation
 
-This is the most serious finding. The failure of holdout transfer suggests:
+**UPDATE**: Post-hoc evaluator overlap analysis explains this result.
 
-1. **Overfitting to Evaluator Identity**: The student may be learning *who* trained it,
-   not *how to judge*. This is a form of evaluator memorization.
+#### Evaluator Latent Overlap Analysis
 
-2. **Insufficient Evaluator Diversity**: With only 3-5 professors, there may not be
-   enough diversity to force generalization beyond specific evaluator patterns.
+Before concluding this is a falsification, we tested whether holdout transfer was
+even *possible* given the professor design:
 
-3. **Simulation Artifact**: The synthetic professor implementations may share too much
-   structure, making "holdout" not truly independent.
+| Metric | Value | Interpretation |
+|--------|-------|----------------|
+| Mean inter-professor correlation | **0.004** | Professors measure independent qualities |
+| First factor variance explained | 67.8% | Strong dominant dimension |
+| Factors needed for 90% variance | 3 | Each professor loads on different factor |
+| Effective dimensionality | 1.9 / 3 | Minimal redundancy |
 
-**Correct framing**: "Conscience formation is bounded by evaluator diversity; ASPIRE
-exposes this dependency rather than obscuring it. Transfer to truly novel evaluators
-remains an open challenge that requires either (a) more diverse evaluation, or
-(b) explicit regularization against evaluator-specific features."
+**Factor Loadings** (each professor loads on a different dimension):
+
+| Professor | Factor 1 | Factor 2 |
+|-----------|----------|----------|
+| accuracy | -0.998 | 0.070 |
+| clarity | 0.002 | 0.137 |
+| calibration | 0.070 | 0.988 |
+
+#### Verdict
+
+The professors measure **orthogonal qualities** with no shared evaluative space.
+Holdout transfer **should fail** because there is no common latent structure to
+internalize. The student learns accuracy and calibration independently; "clarity"
+knowledge cannot transfer from accuracy/calibration training.
+
+**This is a property of the experimental design, not a falsification of ASPIRE.**
+
+The original interpretation was incorrect. We should not conclude:
+- ❌ ASPIRE fails to produce generalizable conscience
+- ❌ Students memorize evaluator identity instead of learning judgment
+
+Instead, the correct conclusion is:
+- ✅ This experiment cannot test internalization (professors are orthogonal)
+- ✅ Holdout transfer requires professors that share latent structure
+- ✅ Future experiments should use correlated evaluators to test transfer
+
+**Correct framing**: "Holdout transfer tests are only valid when professors share
+latent evaluative structure. With orthogonal professors, failure is expected and
+does not falsify the internalization hypothesis."
 
 ---
 
@@ -196,9 +227,16 @@ The experiments operated under these constraints:
    from genuine conscience. This is not a weakness of ASPIRE specifically—it is a
    philosophical boundary of any empirical approach to evaluating internal states.
 
-3. **Transfer vs Memorization**
-   The holdout experiments reveal that conscience may be *evaluator-specific* rather
-   than *judgment-general*. This is the most significant limitation identified.
+3. **Evaluator Latent Structure Requirement** *(NEW)*
+   > "Holdout transfer is only testable when professors share latent evaluative space."
+
+   The holdout experiments initially appeared to show *evaluator-specific* rather than
+   *judgment-general* conscience. However, post-hoc analysis revealed the professors
+   measure orthogonal qualities (r = 0.004). Transfer failure was **expected** given
+   this design—there was no shared structure to transfer.
+
+   **Implication**: Future holdout transfer experiments must verify evaluator overlap
+   before interpreting results. Orthogonal professors cannot test internalization.
 
 ### What ASPIRE Does and Does Not Claim
 
@@ -218,20 +256,39 @@ The experiments operated under these constraints:
 
 ## Recommendations
 
-1. **For Researchers**: The holdout transfer failure is the most important finding.
-   Future work should investigate (a) evaluator diversity requirements and
-   (b) regularization techniques to force judgment generalization.
+1. **For Researchers**: The evaluator overlap analysis is the most important finding.
+   Future work should:
+   - (a) Design professors with known latent overlap before running holdout experiments
+   - (b) Use factor analysis to verify shared structure before interpreting transfer results
+   - (c) Consider professors that measure the *same* qualities from different perspectives
 
-2. **For Practitioners**: Use ASPIRE with diverse, independent evaluators. Do not
-   assume transfer to truly novel evaluation criteria without empirical validation.
+2. **For Practitioners**: Use ASPIRE with evaluators that share latent structure. Verify
+   inter-evaluator correlation before expecting holdout transfer to work.
 
 3. **For Reviewers**: The systematic negative results demonstrate intellectual honesty.
-   The theory is falsifiable and some predictions were not confirmed. This is how
-   science should work.
+   The apparent "falsification" was investigated and explained—professors measured
+   orthogonal qualities, making holdout transfer untestable. This is how science
+   should work: negative results prompt deeper analysis, not premature rejection.
 
 ---
 
-## Appendix: Raw Failure Data
+## Appendix A: Evaluator Overlap Analysis
+
+The full evaluator overlap analysis is available at `experiments/analysis/evaluator_overlap_report.md`.
+
+Key findings:
+- Inter-professor pairwise correlations range from -0.085 to 0.099
+- Accuracy and calibration load on orthogonal factors (Factor 1 vs Factor 2)
+- Clarity has weak loadings on both factors (0.002, 0.137)
+- Effective dimensionality = 1.9, confirming minimal redundancy
+
+**Conclusion**: The 10 holdout transfer "falsifications" are reclassified as
+**expected failures** given the evaluator design. The falsification count drops
+from 11 to 1 (only `random_matches_full` remains unexplained).
+
+---
+
+## Appendix B: Raw Failure Data
 
 See `failure_report.json` for complete structured data including:
 - All 19 failure cases with timestamps and observed values

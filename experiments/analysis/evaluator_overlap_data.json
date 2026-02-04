@@ -1,0 +1,110 @@
+{
+  "seeds": [
+    42,
+    123,
+    456
+  ],
+  "results": [
+    {
+      "pairwise_correlations": {
+        "accuracy_vs_clarity": -0.19284381661820088,
+        "accuracy_vs_calibration": -0.02145763241435563,
+        "clarity_vs_calibration": -0.016916191928717083
+      },
+      "mean_pairwise_correlation": -0.07707254698709119,
+      "min_pairwise_correlation": -0.19284381661820088,
+      "max_pairwise_correlation": -0.016916191928717083,
+      "n_factors_extracted": 3,
+      "variance_explained_by_first_factor": 0.6830780167404094,
+      "total_variance_explained": 1.0000000000000002,
+      "factor_loadings": {
+        "accuracy": [
+          -0.9956308635114296,
+          0.013644367726457213
+        ],
+        "clarity": [
+          0.09188478198226772,
+          -0.032965806403112974
+        ],
+        "calibration": [
+          0.01662439362973867,
+          0.9993633407512693
+        ]
+      },
+      "effective_dimensionality": 1.914390358781749,
+      "participation_ratio": 1.914390358781749,
+      "has_shared_structure": false,
+      "interpretation": "Low inter-professor agreement (r=-0.08): Professors measure largely independent qualities.\nStrong first factor (68.3% variance): A dominant shared dimension exists.\nModerate effective dimensionality (1.9/3): Some redundancy in evaluation.\n\nVERDICT: No meaningful shared structure. Holdout transfer SHOULD FAIL. The failure is expected given the evaluator design, not a limitation of ASPIRE.",
+      "transfer_should_succeed": false
+    },
+    {
+      "pairwise_correlations": {
+        "accuracy_vs_clarity": 0.11096284890611015,
+        "accuracy_vs_calibration": 0.012916161797469048,
+        "clarity_vs_calibration": 0.004699547907681464
+      },
+      "mean_pairwise_correlation": 0.04285951953708689,
+      "min_pairwise_correlation": 0.004699547907681464,
+      "max_pairwise_correlation": 0.11096284890611015,
+      "n_factors_extracted": 3,
+      "variance_explained_by_first_factor": 0.6988382269719238,
+      "total_variance_explained": 1.0,
+      "factor_loadings": {
+        "accuracy": [
+          -0.9986858443161186,
+          -0.009865224584337322
+        ],
+        "clarity": [
+          -0.050333835948391116,
+          0.0040634408837757485
+        ],
+        "calibration": [
+          -0.009648280744374196,
+          0.9999430812761717
+        ]
+      },
+      "effective_dimensionality": 1.857842229285553,
+      "participation_ratio": 1.857842229285553,
+      "has_shared_structure": false,
+      "interpretation": "Low inter-professor agreement (r=0.04): Professors measure largely independent qualities.\nStrong first factor (69.9% variance): A dominant shared dimension exists.\nModerate effective dimensionality (1.9/3): Some redundancy in evaluation.\n\nVERDICT: No meaningful shared structure. Holdout transfer SHOULD FAIL. The failure is expected given the evaluator design, not a limitation of ASPIRE.",
+      "transfer_should_succeed": false
+    },
+    {
+      "pairwise_correlations": {
+        "accuracy_vs_clarity": -0.0002647634104503993,
+        "accuracy_vs_calibration": -0.08496572299557807,
+        "clarity_vs_calibration": 0.09872547270744382
+      },
+      "mean_pairwise_correlation": 0.00449832876713845,
+      "min_pairwise_correlation": -0.08496572299557807,
+      "max_pairwise_correlation": 0.09872547270744382,
+      "n_factors_extracted": 3,
+      "variance_explained_by_first_factor": 0.6780070473127207,
+      "total_variance_explained": 1.0,
+      "factor_loadings": {
+        "accuracy": [
+          -0.9975227756178481,
+          0.06992302649410244
+        ],
+        "clarity": [
+          0.0019844702152286425,
+          0.1371989387448448
+        ],
+        "calibration": [
+          0.07031624280085826,
+          0.9880724778948116
+        ]
+      },
+      "effective_dimensionality": 1.931787570103068,
+      "participation_ratio": 1.931787570103068,
+      "has_shared_structure": false,
+      "interpretation": "Low inter-professor agreement (r=0.00): Professors measure largely independent qualities.\nStrong first factor (67.8% variance): A dominant shared dimension exists.\nModerate effective dimensionality (1.9/3): Some redundancy in evaluation.\n\nVERDICT: No meaningful shared structure. Holdout transfer SHOULD FAIL. The failure is expected given the evaluator design, not a limitation of ASPIRE.",
+      "transfer_should_succeed": false
+    }
+  ],
+  "averaged": {
+    "mean_pairwise_correlation": -0.009904899560955286,
+    "variance_explained_by_first_factor": 0.6866410970083513,
+    "effective_dimensionality": 1.9013400527234567
+  }
+}
