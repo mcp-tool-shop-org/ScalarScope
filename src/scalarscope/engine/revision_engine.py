@@ -1,4 +1,4 @@
-"""ASPIRE Engine with revision support - the self-correction loop."""
+"""ScalarScope Engine with revision support - the self-correction loop."""
 
 from dataclasses import dataclass, field
 from typing import List, Optional, Callable, Iterator
@@ -119,7 +119,7 @@ class RevisionMetrics:
         return self.throttled_cycles / self.total_cycles
 
 
-class RevisionAspireEngine:
+class RevisionScalarScopeEngine:
     """ASPIRE Engine with two-pass revision support.
 
     Extends the base training loop with self-correction:

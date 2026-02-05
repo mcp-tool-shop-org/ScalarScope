@@ -20,7 +20,7 @@ from datetime import datetime
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from aspire.experiments import (
+from scalarscope.experiments import (
     ExperimentConfig,
     NullVsStructuredExperiment,
     HoldoutTransferExperiment,
@@ -31,7 +31,7 @@ from aspire.experiments import (
 )
 # Figure generation is optional (requires matplotlib)
 try:
-    from aspire.experiments.figures import (
+    from scalarscope.experiments.figures import (
         FigureGenerator,
         FigureConfig,
         generate_failure_atlas,

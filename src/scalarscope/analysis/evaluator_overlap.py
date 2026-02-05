@@ -314,7 +314,7 @@ def run_overlap_analysis(
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-    from aspire.core import TrainingItem, StudentResponse
+    from scalarscope.core import TrainingItem, StudentResponse
 
     np.random.seed(seed)
     random.seed(seed)

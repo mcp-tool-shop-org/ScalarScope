@@ -1,0 +1,592 @@
+{
+  "experiment": "exp1_null_vs_structured",
+  "description": "Does conscience emerge only under meaningful evaluation?",
+  "version": "1.0",
+  "config": {
+    "n_training_items": 100,
+    "n_training_cycles": 50,
+    "n_runs_per_condition": 10,
+    "base_seed": 42
+  },
+  "conditions": {
+    "full_aspire": {
+      "n_runs": 10,
+      "statistics": {
+        "conscience": {
+          "mean": 0.51,
+          "std": 0.18681541692269402,
+          "min": 0.2,
+          "max": 0.7
+        },
+        "surprise_stability": {
+          "mean": 0.13362825641971995,
+          "std": 0.09708804790549974
+        },
+        "generalization_min": {
+          "mean": 0.6999999999999998,
+          "std": 0.4582575694955839
+        }
+      },
+      "runs": [
+        {
+          "condition": "full_aspire",
+          "run_idx": 0,
+          "seed": 923,
+          "start_time": "2026-02-04T17:14:53.610974",
+          "end_time": "2026-02-04T17:14:53.675806",
+          "duration_seconds": 0.064832,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.31305903585177197,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 1,
+          "seed": 1923,
+          "start_time": "2026-02-04T17:14:53.677550",
+          "end_time": "2026-02-04T17:14:53.740437",
+          "duration_seconds": 0.062887,
+          "final_conscience_score": 0.7,
+          "final_surprise_stability": 0.03861594536191537,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 2,
+          "seed": 2923,
+          "start_time": "2026-02-04T17:14:53.740836",
+          "end_time": "2026-02-04T17:14:53.803049",
+          "duration_seconds": 0.062213,
+          "final_conscience_score": 0.7,
+          "final_surprise_stability": 0.07544497041495857,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 3,
+          "seed": 3923,
+          "start_time": "2026-02-04T17:14:53.803443",
+          "end_time": "2026-02-04T17:14:53.865666",
+          "duration_seconds": 0.062223,
+          "final_conscience_score": 0.2,
+          "final_surprise_stability": 0.0,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 4,
+          "seed": 4923,
+          "start_time": "2026-02-04T17:14:53.866016",
+          "end_time": "2026-02-04T17:14:53.929448",
+          "duration_seconds": 0.063432,
+          "final_conscience_score": 0.4,
+          "final_surprise_stability": 0.18201974725809922,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 5,
+          "seed": 5923,
+          "start_time": "2026-02-04T17:14:53.929805",
+          "end_time": "2026-02-04T17:14:53.997232",
+          "duration_seconds": 0.067427,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.18201974725809944,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 6,
+          "seed": 6923,
+          "start_time": "2026-02-04T17:14:53.997706",
+          "end_time": "2026-02-04T17:14:54.066408",
+          "duration_seconds": 0.068702,
+          "final_conscience_score": 0.2,
+          "final_surprise_stability": 0.18209103853052355,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 7,
+          "seed": 7923,
+          "start_time": "2026-02-04T17:14:54.066804",
+          "end_time": "2026-02-04T17:14:54.131455",
+          "duration_seconds": 0.064651,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.21558388673793305,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 8,
+          "seed": 8923,
+          "start_time": "2026-02-04T17:14:54.131888",
+          "end_time": "2026-02-04T17:14:54.193966",
+          "duration_seconds": 0.062078,
+          "final_conscience_score": 0.7,
+          "final_surprise_stability": 0.14744819278389842,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 9,
+          "seed": 9923,
+          "start_time": "2026-02-04T17:14:54.194354",
+          "end_time": "2026-02-04T17:14:54.255906",
+          "duration_seconds": 0.061552,
+          "final_conscience_score": 0.7,
+          "final_surprise_stability": 0.0,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        }
+      ]
+    },
+    "scalar_reward": {
+      "n_runs": 10,
+      "statistics": {
+        "conscience": {
+          "mean": 0.36000000000000004,
+          "std": 0.16248076809271922,
+          "min": 0.0,
+          "max": 0.5
+        },
+        "surprise_stability": {
+          "mean": 0.21968423652884178,
+          "std": 0.09115138915474845
+        },
+        "generalization_min": {
+          "mean": 0.7999999999999998,
+          "std": 0.3999999999999999
+        }
+      },
+      "runs": [
+        {
+          "condition": "scalar_reward",
+          "run_idx": 0,
+          "seed": 738,
+          "start_time": "2026-02-04T17:14:54.256271",
+          "end_time": "2026-02-04T17:14:54.328744",
+          "duration_seconds": 0.072473,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 0.17874273009085073,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 1,
+          "seed": 1738,
+          "start_time": "2026-02-04T17:14:54.329149",
+          "end_time": "2026-02-04T17:14:54.400311",
+          "duration_seconds": 0.071162,
+          "final_conscience_score": 0.0,
+          "final_surprise_stability": 0.2770011945187787,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 2,
+          "seed": 2738,
+          "start_time": "2026-02-04T17:14:54.400716",
+          "end_time": "2026-02-04T17:14:54.471738",
+          "duration_seconds": 0.071022,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.4327264258239438,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 3,
+          "seed": 3738,
+          "start_time": "2026-02-04T17:14:54.472108",
+          "end_time": "2026-02-04T17:14:54.546567",
+          "duration_seconds": 0.074459,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.21208632864306298,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 4,
+          "seed": 4738,
+          "start_time": "2026-02-04T17:14:54.547028",
+          "end_time": "2026-02-04T17:14:54.618539",
+          "duration_seconds": 0.071511,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.07239888939469097,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 5,
+          "seed": 5738,
+          "start_time": "2026-02-04T17:14:54.618976",
+          "end_time": "2026-02-04T17:14:54.691003",
+          "duration_seconds": 0.072027,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 0.2132042075305567,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 6,
+          "seed": 6738,
+          "start_time": "2026-02-04T17:14:54.691407",
+          "end_time": "2026-02-04T17:14:54.764951",
+          "duration_seconds": 0.073544,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.14339085485671765,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 7,
+          "seed": 7738,
+          "start_time": "2026-02-04T17:14:54.765415",
+          "end_time": "2026-02-04T17:14:54.838838",
+          "duration_seconds": 0.073423,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 0.21208632864306298,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 8,
+          "seed": 8738,
+          "start_time": "2026-02-04T17:14:54.839226",
+          "end_time": "2026-02-04T17:14:54.914002",
+          "duration_seconds": 0.074776,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.17789939598481597,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 9,
+          "seed": 9738,
+          "start_time": "2026-02-04T17:14:54.914394",
+          "end_time": "2026-02-04T17:14:55.001662",
+          "duration_seconds": 0.087268,
+          "final_conscience_score": 0.2,
+          "final_surprise_stability": 0.2773060098019374,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        }
+      ]
+    },
+    "random_professors": {
+      "n_runs": 10,
+      "statistics": {
+        "conscience": {
+          "mean": 0.42000000000000004,
+          "std": 0.09797958971132713,
+          "min": 0.3,
+          "max": 0.5
+        },
+        "surprise_stability": {
+          "mean": 1.0,
+          "std": 1.2658490090568387e-16
+        },
+        "generalization_min": {
+          "mean": -0.3999999999999999,
+          "std": 0.4898979485566355
+        }
+      },
+      "runs": [
+        {
+          "condition": "random_professors",
+          "run_idx": 0,
+          "seed": 671,
+          "start_time": "2026-02-04T17:14:55.002182",
+          "end_time": "2026-02-04T17:14:55.149777",
+          "duration_seconds": 0.147595,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 1.0,
+          "final_generalization_min": -0.9999999999999998,
+          "final_generalization_mean": -0.33333333333333326,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 1,
+          "seed": 1671,
+          "start_time": "2026-02-04T17:14:55.150229",
+          "end_time": "2026-02-04T17:14:55.285045",
+          "duration_seconds": 0.134816,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 1.0,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 2,
+          "seed": 2671,
+          "start_time": "2026-02-04T17:14:55.285509",
+          "end_time": "2026-02-04T17:14:55.423065",
+          "duration_seconds": 0.137556,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.9999999999999998,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 3,
+          "seed": 3671,
+          "start_time": "2026-02-04T17:14:55.423571",
+          "end_time": "2026-02-04T17:14:55.560207",
+          "duration_seconds": 0.136636,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 1.0,
+          "final_generalization_min": -0.9999999999999998,
+          "final_generalization_mean": -0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 4,
+          "seed": 4671,
+          "start_time": "2026-02-04T17:14:55.560783",
+          "end_time": "2026-02-04T17:14:55.695734",
+          "duration_seconds": 0.134951,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 1.0,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 5,
+          "seed": 5671,
+          "start_time": "2026-02-04T17:14:55.696219",
+          "end_time": "2026-02-04T17:14:55.833160",
+          "duration_seconds": 0.136941,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 0.9999999999999998,
+          "final_generalization_min": -0.9999999999999998,
+          "final_generalization_mean": -0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 6,
+          "seed": 6671,
+          "start_time": "2026-02-04T17:14:55.833656",
+          "end_time": "2026-02-04T17:14:56.000199",
+          "duration_seconds": 0.166543,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.9999999999999999,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 7,
+          "seed": 7671,
+          "start_time": "2026-02-04T17:14:56.000842",
+          "end_time": "2026-02-04T17:14:56.173971",
+          "duration_seconds": 0.173129,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 1.0,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 8,
+          "seed": 8671,
+          "start_time": "2026-02-04T17:14:56.174624",
+          "end_time": "2026-02-04T17:14:56.320651",
+          "duration_seconds": 0.146027,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 0.9999999999999998,
+          "final_generalization_min": -0.9999999999999998,
+          "final_generalization_mean": -0.33333333333333326,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 50,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 9,
+          "seed": 9671,
+          "start_time": "2026-02-04T17:14:56.321123",
+          "end_time": "2026-02-04T17:14:56.472752",
+          "duration_seconds": 0.151629,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 1.0,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 50,
+          "extra_data": {}
+        }
+      ]
+    }
+  },
+  "falsification": {
+    "results": {
+      "conscience_separation": false,
+      "surprise_stability": false,
+      "generalization": true
+    },
+    "details": {
+      "conscience_separation": "FULL mean=0.510, RANDOM mean=0.420, separation=0.090 vs std=0.187 *** THEORY FALSIFIED: Random achieves comparable scores ***",
+      "surprise_stability": "FULL stability=0.134, RANDOM stability=1.000 *** THEORY FALSIFIED: Random shows comparable stability ***",
+      "generalization": "FULL generalization=0.700, RANDOM=-0.400"
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "experiment": "exp2_holdout_transfer",
+  "description": "Does the student learn to judge, or just who trained it?",
+  "version": "1.0",
+  "config": {
+    "n_training_items": 30,
+    "n_training_cycles": 20,
+    "n_runs_per_condition": 3,
+    "base_seed": 42
+  },
+  "conditions": {
+    "all_professors": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.09342548093703902,
+          "std": 0.007174958487548043,
+          "min": 0.08398774009549408,
+          "max": 0.10137186275251367
+        },
+        "surprise_stability": {
+          "mean": 0.45205298231823043,
+          "std": 0.023355881381743153
+        },
+        "generalization_min": {
+          "mean": -0.0029276335270419507,
+          "std": 0.020559630952736867
+        }
+      },
+      "runs": [
+        {
+          "condition": "all_professors",
+          "run_idx": 0,
+          "seed": 360,
+          "start_time": "2026-02-04T17:14:13.644284",
+          "end_time": "2026-02-04T17:14:13.671328",
+          "duration_seconds": 0.027044,
+          "final_conscience_score": 0.08398774009549408,
+          "final_surprise_stability": 0.4804905500026777,
+          "final_generalization_min": -0.026816090730500043,
+          "final_generalization_mean": 0.2978365274719803,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "all_professors",
+          "run_idx": 1,
+          "seed": 1360,
+          "start_time": "2026-02-04T17:14:13.671696",
+          "end_time": "2026-02-04T17:14:13.698274",
+          "duration_seconds": 0.026578,
+          "final_conscience_score": 0.10137186275251367,
+          "final_surprise_stability": 0.452384949343967,
+          "final_generalization_min": 0.023371170885139216,
+          "final_generalization_mean": 0.3223254285849527,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "all_professors",
+          "run_idx": 2,
+          "seed": 2360,
+          "start_time": "2026-02-04T17:14:13.698587",
+          "end_time": "2026-02-04T17:14:13.724846",
+          "duration_seconds": 0.026259,
+          "final_conscience_score": 0.09491683996310936,
+          "final_surprise_stability": 0.4232834476080466,
+          "final_generalization_min": -0.005337980735765024,
+          "final_generalization_mean": 0.3199481203675412,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    },
+    "holdout_one": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.10020203594256168,
+          "std": 0.020516852917515222,
+          "min": 0.07118938192174577,
+          "max": 0.11504199517526763
+        },
+        "surprise_stability": {
+          "mean": 0.4209767850902102,
+          "std": 0.06917493138281908
+        },
+        "generalization_min": {
+          "mean": -0.025975040693007188,
+          "std": 0.1636243248656084
+        }
+      },
+      "runs": [
+        {
+          "condition": "holdout_one",
+          "run_idx": 0,
+          "seed": 336,
+          "start_time": "2026-02-04T17:14:13.725258",
+          "end_time": "2026-02-04T17:14:13.746748",
+          "duration_seconds": 0.02149,
+          "final_conscience_score": 0.07118938192174577,
+          "final_surprise_stability": 0.3953869895825861,
+          "final_generalization_min": -0.2573485516593115,
+          "final_generalization_mean": 0.2566194793431591,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "holdout_one",
+          "run_idx": 1,
+          "seed": 1336,
+          "start_time": "2026-02-04T17:14:13.747098",
+          "end_time": "2026-02-04T17:14:13.772093",
+          "duration_seconds": 0.024995,
+          "final_conscience_score": 0.11437473073067161,
+          "final_surprise_stability": 0.5155434901625295,
+          "final_generalization_min": 0.08669453913510948,
+          "final_generalization_mean": 0.3658923060680655,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "holdout_one",
+          "run_idx": 2,
+          "seed": 2336,
+          "start_time": "2026-02-04T17:14:13.772440",
+          "end_time": "2026-02-04T17:14:13.798487",
+          "duration_seconds": 0.026047,
+          "final_conscience_score": 0.11504199517526763,
+          "final_surprise_stability": 0.35199987552551504,
+          "final_generalization_min": 0.09272889044518041,
+          "final_generalization_mean": 0.33210253828221586,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    },
+    "single_professor": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.23868186651812232,
+          "std": 0.036215329559915556,
+          "min": 0.1988562326579372,
+          "max": 0.2864831095139827
+        },
+        "surprise_stability": {
+          "mean": 0.12604915611751324,
+          "std": 0.08947198279706593
+        },
+        "generalization_min": {
+          "mean": 0.6819481900517781,
+          "std": 0.10347237017118728
+        }
+      },
+      "runs": [
+        {
+          "condition": "single_professor",
+          "run_idx": 0,
+          "seed": 520,
+          "start_time": "2026-02-04T17:14:13.798851",
+          "end_time": "2026-02-04T17:14:13.809636",
+          "duration_seconds": 0.010785,
+          "final_conscience_score": 0.1988562326579372,
+          "final_surprise_stability": 0.0,
+          "final_generalization_min": 0.5681606647369635,
+          "final_generalization_mean": 0.5681606647369635,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "single_professor",
+          "run_idx": 1,
+          "seed": 1520,
+          "start_time": "2026-02-04T17:14:13.809844",
+          "end_time": "2026-02-04T17:14:13.819245",
+          "duration_seconds": 0.009401,
+          "final_conscience_score": 0.2864831095139827,
+          "final_surprise_stability": 0.17950497041051783,
+          "final_generalization_min": 0.8185231700399506,
+          "final_generalization_mean": 0.8185231700399506,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "single_professor",
+          "run_idx": 2,
+          "seed": 2520,
+          "start_time": "2026-02-04T17:14:13.819394",
+          "end_time": "2026-02-04T17:14:13.829468",
+          "duration_seconds": 0.010074,
+          "final_conscience_score": 0.2307062573824471,
+          "final_surprise_stability": 0.19864249794202193,
+          "final_generalization_min": 0.6591607353784203,
+          "final_generalization_mean": 0.6591607353784203,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    }
+  },
+  "falsification": {
+    "results": {
+      "holdout_correlation": false,
+      "transfer_ratio": false,
+      "ensemble_benefit": false
+    },
+    "details": {
+      "holdout_correlation": "Mean holdout correlation = -0.026 (threshold = 0.2) *** THEORY FALSIFIED: No holdout transfer ***",
+      "transfer_ratio": "Mean transfer ratio = -0.162 (threshold = 0.5) *** WARNING: Low transfer ratio suggests memorization ***",
+      "ensemble_benefit": "All-prof generalization = -0.003, Single-prof = 0.682"
+    }
+  }
+}

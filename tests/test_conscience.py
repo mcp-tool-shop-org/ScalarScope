@@ -17,7 +17,7 @@ from typing import List, Dict
 import sys
 sys.path.insert(0, 'F:/AI/aspire-engine/src')
 
-from aspire.conscience.metrics import (
+from scalarscope.conscience.metrics import (
     SurpriseStability,
     AnisotropyStability,
     GeneralizationScore,
@@ -25,7 +25,7 @@ from aspire.conscience.metrics import (
     ConscienceScore,
     compute_conscience_score,
 )
-from aspire.conscience.validation import (
+from scalarscope.conscience.validation import (
     FailureMode,
     detect_heuristic_collapse,
     detect_professor_pleasing,
@@ -33,21 +33,21 @@ from aspire.conscience.validation import (
     detect_geometric_instability,
     ConscienceValidator,
 )
-from aspire.conscience.leakage import (
+from scalarscope.conscience.leakage import (
     detect_early_collapse,
     detect_velocity_anomaly,
     detect_curvature_anomaly,
     detect_text_token_shortcut,
     FeatureLeakageDetector,
 )
-from aspire.conscience.ablation import (
+from scalarscope.conscience.ablation import (
     AblationType,
     AblationConfig,
     AblationRunner,
     compare_ablations,
 )
-from aspire.geometry.state import StateVector, StateSnapshot
-from aspire.geometry.trajectory import TrainingTrajectory
+from scalarscope.geometry.state import StateVector, StateSnapshot
+from scalarscope.geometry.trajectory import TrainingTrajectory
 
 
 class TestSurpriseStability:
@@ -110,7 +110,7 @@ class TestGeneralizationScore:
 
     def test_high_generalization(self):
         """High correlation across professors = high generalization."""
-        from aspire.core import TokenVector, TokenDimension
+        from scalarscope.core import TokenVector, TokenDimension
 
         # Predictions that correlate well with all professors
         n_samples = 50
@@ -140,7 +140,7 @@ class TestGeneralizationScore:
 
     def test_low_generalization(self):
         """Low correlation with one professor = low min generalization."""
-        from aspire.core import TokenVector, TokenDimension
+        from scalarscope.core import TokenVector, TokenDimension
 
         n_samples = 50
         # Predictions that have variance
@@ -419,7 +419,7 @@ class TestAblationFramework:
 
     def test_compare_ablations(self):
         """Should compare ablation results against baseline."""
-        from aspire.conscience.ablation import AblationResult, AblationComparison
+        from scalarscope.conscience.ablation import AblationResult, AblationComparison
 
         # Create mock results
         baseline_metrics = ConscienceMetrics(
@@ -462,7 +462,7 @@ class TestAblationFramework:
 
     def test_comparison_summary(self):
         """Should generate readable comparison summary."""
-        from aspire.conscience.ablation import AblationResult, AblationComparison
+        from scalarscope.conscience.ablation import AblationResult, AblationComparison
 
         baseline = AblationResult(
             config=AblationConfig(AblationType.FULL),
@@ -488,12 +488,12 @@ class TestAdversarialProfessors:
 
     def test_rotating_selector(self):
         """Should rotate through professors."""
-        from aspire.professors import (
+        from scalarscope.professors import (
             StrictLogician,
             PragmaticEngineer,
             EmpathyAdvocate,
         )
-        from aspire.professors.adversarial import RotatingSelector, RotationConfig
+        from scalarscope.professors.adversarial import RotatingSelector, RotationConfig
 
         professors = [StrictLogician(), PragmaticEngineer(), EmpathyAdvocate()]
         selector = RotatingSelector(
@@ -517,8 +517,8 @@ class TestAdversarialProfessors:
 
     def test_adversarial_professor_observation(self):
         """Should learn patterns from observations."""
-        from aspire.professors.adversarial import AdversarialProfessor
-        from aspire.core import StudentResponse, TrainingItem, TokenVector, TokenDimension, ProfessorCritique
+        from scalarscope.professors.adversarial import AdversarialProfessor
+        from scalarscope.core import StudentResponse, TrainingItem, TokenVector, TokenDimension, ProfessorCritique
 
         adversary = AdversarialProfessor()
 
@@ -552,12 +552,12 @@ class TestAdversarialProfessors:
 
     def test_holdout_manager(self):
         """Should correctly separate training and holdout professors."""
-        from aspire.professors import (
+        from scalarscope.professors import (
             StrictLogician,
             PragmaticEngineer,
             EmpathyAdvocate,
         )
-        from aspire.professors.adversarial import HoldoutManager, HoldoutConfig
+        from scalarscope.professors.adversarial import HoldoutManager, HoldoutConfig
 
         professors = [StrictLogician(), PragmaticEngineer(), EmpathyAdvocate()]
         manager = HoldoutManager(

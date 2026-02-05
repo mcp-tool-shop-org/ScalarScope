@@ -1,10 +1,10 @@
-"""Demo: Run the ASPIRE training loop with mock components."""
+"""Demo: Run the ScalarScope training loop with mock components."""
 
-from aspire.core import TrainingItem
-from aspire.student import MockStudent
-from aspire.professors import ProfessorEnsemble
-from aspire.critic import HeuristicCritic
-from aspire.engine import AspireEngine
+from scalarscope.core import TrainingItem
+from scalarscope.student import MockStudent
+from scalarscope.professors import ProfessorEnsemble
+from scalarscope.critic import HeuristicCritic
+from scalarscope.engine import ScalarScopeEngine
 
 
 def create_test_items():
@@ -72,7 +72,7 @@ def main():
     critic = HeuristicCritic()
 
     # Create engine
-    engine = AspireEngine(
+    engine = ScalarScopeEngine(
         student=student,
         professors=professors,
         critic=critic,

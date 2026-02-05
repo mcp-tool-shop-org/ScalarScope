@@ -1,4 +1,4 @@
-"""ASPIRE training loop - the core engine."""
+"""ScalarScope training loop - the core engine."""
 
 from dataclasses import dataclass, field
 from typing import List, Optional, Callable, Iterator
@@ -66,8 +66,8 @@ class TrainingMetrics:
         return self.throttled_cycles / self.total_cycles
 
 
-class AspireEngine:
-    """The ASPIRE training engine.
+class ScalarScopeEngine:
+    """The ScalarScope training engine.
 
     Orchestrates the test→critique→reveal→update loop.
 

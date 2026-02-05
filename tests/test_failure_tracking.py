@@ -9,7 +9,7 @@ from dataclasses import dataclass
 
 sys.path.insert(0, 'F:/AI/aspire-engine/src')
 
-from aspire.experiments.failure_tracking import (
+from scalarscope.experiments.failure_tracking import (
     FailureTracker,
     FailureReport,
     FailureCase,

@@ -12,7 +12,7 @@ import numpy as np
 import sys
 sys.path.insert(0, 'F:/AI/aspire-engine/src')
 
-from aspire.conscience.calibration import (
+from scalarscope.conscience.calibration import (
     NullDistribution,
     CalibrationProfile,
     CalibratedResult,

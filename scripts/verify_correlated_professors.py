@@ -18,7 +18,7 @@ import json
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from aspire.professors.correlated import verify_correlation_structure
+from scalarscope.professors.correlated import verify_correlation_structure
 
 
 def main():

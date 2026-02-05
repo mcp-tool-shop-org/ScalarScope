@@ -12,21 +12,21 @@ import tempfile
 from pathlib import Path
 sys.path.insert(0, 'F:/AI/aspire-engine/src')
 
-from aspire.experiments.experiment_runner import (
+from scalarscope.experiments.experiment_runner import (
     ExperimentConfig,
     ExperimentResult,
     Condition,
     TrajectoryPoint,
 )
-from aspire.experiments.experiment1_null_vs_structured import (
+from scalarscope.experiments.experiment1_null_vs_structured import (
     NullVsStructuredExperiment,
     NullVsStructuredResult,
 )
-from aspire.experiments.experiment2_holdout_transfer import (
+from scalarscope.experiments.experiment2_holdout_transfer import (
     HoldoutTransferExperiment,
     HoldoutTransferResult,
 )
-from aspire.experiments.experiment3_adversarial import (
+from scalarscope.experiments.experiment3_adversarial import (
     AdversarialPressureExperiment,
     AdversarialPressureResult,
 )

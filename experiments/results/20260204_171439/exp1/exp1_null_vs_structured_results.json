@@ -1,0 +1,242 @@
+{
+  "experiment": "exp1_null_vs_structured",
+  "description": "Does conscience emerge only under meaningful evaluation?",
+  "version": "1.0",
+  "config": {
+    "n_training_items": 30,
+    "n_training_cycles": 20,
+    "n_runs_per_condition": 3,
+    "base_seed": 42
+  },
+  "conditions": {
+    "full_aspire": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.39999999999999997,
+          "std": 0.1414213562373095,
+          "min": 0.2,
+          "max": 0.5
+        },
+        "surprise_stability": {
+          "mean": 0.23434706266079386,
+          "std": 0.1043309934994867
+        },
+        "generalization_min": {
+          "mean": 0.6666666666666665,
+          "std": 0.4714045207910316
+        }
+      },
+      "runs": [
+        {
+          "condition": "full_aspire",
+          "run_idx": 0,
+          "seed": 1038,
+          "start_time": "2026-02-04T17:14:39.348956",
+          "end_time": "2026-02-04T17:14:39.361205",
+          "duration_seconds": 0.012249,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.3439703111462922,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 1,
+          "seed": 2038,
+          "start_time": "2026-02-04T17:14:39.362645",
+          "end_time": "2026-02-04T17:14:39.375142",
+          "duration_seconds": 0.012497,
+          "final_conscience_score": 0.2,
+          "final_surprise_stability": 0.2650602409638555,
+          "final_generalization_min": -1.661904390068412e-16,
+          "final_generalization_mean": 0.3333333333333343,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "full_aspire",
+          "run_idx": 2,
+          "seed": 3038,
+          "start_time": "2026-02-04T17:14:39.375463",
+          "end_time": "2026-02-04T17:14:39.386828",
+          "duration_seconds": 0.011365,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.0940106358722339,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    },
+    "scalar_reward": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.3333333333333333,
+          "std": 0.1247219128924647,
+          "min": 0.2,
+          "max": 0.5
+        },
+        "surprise_stability": {
+          "mean": 0.2880985037436216,
+          "std": 0.038476506335348576
+        },
+        "generalization_min": {
+          "mean": 0.6666666666666665,
+          "std": 0.4714045207910316
+        }
+      },
+      "runs": [
+        {
+          "condition": "scalar_reward",
+          "run_idx": 0,
+          "seed": 588,
+          "start_time": "2026-02-04T17:14:39.387144",
+          "end_time": "2026-02-04T17:14:39.399755",
+          "duration_seconds": 0.012611,
+          "final_conscience_score": 0.2,
+          "final_surprise_stability": 0.26055287927513293,
+          "final_generalization_min": -1.661904390068412e-16,
+          "final_generalization_mean": 0.3333333333333343,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 1,
+          "seed": 1588,
+          "start_time": "2026-02-04T17:14:39.400041",
+          "end_time": "2026-02-04T17:14:39.412745",
+          "duration_seconds": 0.012704,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 0.34251109008085434,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "scalar_reward",
+          "run_idx": 2,
+          "seed": 2588,
+          "start_time": "2026-02-04T17:14:39.413025",
+          "end_time": "2026-02-04T17:14:39.425860",
+          "duration_seconds": 0.012835,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.2612315418748775,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    },
+    "random_professors": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.5333333333333333,
+          "std": 0.20548046676563259,
+          "min": 0.3,
+          "max": 0.8
+        },
+        "surprise_stability": {
+          "mean": 1.0,
+          "std": 1.4332917616497527e-16
+        },
+        "generalization_min": {
+          "mean": 0.33333333333333326,
+          "std": 0.47140452079103157
+        }
+      },
+      "runs": [
+        {
+          "condition": "random_professors",
+          "run_idx": 0,
+          "seed": 706,
+          "start_time": "2026-02-04T17:14:39.426146",
+          "end_time": "2026-02-04T17:14:39.450345",
+          "duration_seconds": 0.024199,
+          "final_conscience_score": 0.8,
+          "final_surprise_stability": 1.0,
+          "final_generalization_min": 0.9999999999999998,
+          "final_generalization_mean": 0.9999999999999998,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 1,
+          "seed": 1706,
+          "start_time": "2026-02-04T17:14:39.450655",
+          "end_time": "2026-02-04T17:14:39.475235",
+          "duration_seconds": 0.02458,
+          "final_conscience_score": 0.5,
+          "final_surprise_stability": 0.9999999999999999,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [
+            "SURPRISE_STAGNATION"
+          ],
+          "warning_count": 1,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "random_professors",
+          "run_idx": 2,
+          "seed": 2706,
+          "start_time": "2026-02-04T17:14:39.475520",
+          "end_time": "2026-02-04T17:14:39.498474",
+          "duration_seconds": 0.022954,
+          "final_conscience_score": 0.3,
+          "final_surprise_stability": 0.9999999999999998,
+          "final_generalization_min": 0.0,
+          "final_generalization_mean": 0.5,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    }
+  },
+  "falsification": {
+    "results": {
+      "conscience_separation": false,
+      "surprise_stability": false,
+      "generalization": true
+    },
+    "details": {
+      "conscience_separation": "FULL mean=0.400, RANDOM mean=0.533, separation=-0.133 vs std=0.141 *** THEORY FALSIFIED: Random achieves comparable scores ***",
+      "surprise_stability": "FULL stability=0.234, RANDOM stability=1.000 *** THEORY FALSIFIED: Random shows comparable stability ***",
+      "generalization": "FULL generalization=0.667, RANDOM=0.333"
+    }
+  }
+}

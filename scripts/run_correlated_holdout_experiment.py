@@ -23,8 +23,8 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from aspire.core import TrainingItem, StudentResponse
-from aspire.professors.correlated import (
+from scalarscope.core import TrainingItem, StudentResponse
+from scalarscope.professors.correlated import (
     CorrelatedProfessorEnsemble,
     verify_correlation_structure,
 )

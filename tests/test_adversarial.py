@@ -8,7 +8,7 @@ import pytest
 import sys
 sys.path.insert(0, 'F:/AI/aspire-engine/src')
 
-from aspire.adversarial.students import (
+from scalarscope.adversarial.students import (
     ConsensusMimic,
     ProfessorFingerprinter,
     FakeHedger,
@@ -18,11 +18,11 @@ from aspire.adversarial.students import (
     SlowRollDeceiver,
     AdversarialConfig,
 )
-from aspire.adversarial.validation import (
+from scalarscope.adversarial.validation import (
     AdversarialTestSuite,
     run_adversarial_validation,
 )
-from aspire.core import TrainingItem
+from scalarscope.core import TrainingItem
 
 
 class TestAdversarialStudents:

@@ -17,11 +17,11 @@ import argparse
 from typing import List
 import random
 
-from aspire.core import TrainingItem, TokenVector, TokenDimension
-from aspire.student import MockStudent
-from aspire.professors import ProfessorEnsemble
-from aspire.critic import LearnedCriticV0
-from aspire.engine import AspireEngine
+from scalarscope.core import TrainingItem, TokenVector, TokenDimension
+from scalarscope.student import MockStudent
+from scalarscope.professors import ProfessorEnsemble
+from scalarscope.critic import LearnedCriticV0
+from scalarscope.engine import ScalarScopeEngine
 
 
 def create_diverse_test_items(count: int = 100) -> List[TrainingItem]:
@@ -228,7 +228,7 @@ def main():
         cycle_count[0] += 1
         print_progress(cycle_count[0], result, critic, args.print_interval)
 
-    engine = AspireEngine(
+    engine = ScalarScopeEngine(
         student=student,
         professors=professors,
         critic=critic,

@@ -14,7 +14,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from aspire.analysis import (
+from scalarscope.analysis import (
     run_overlap_analysis,
     generate_overlap_report,
 )

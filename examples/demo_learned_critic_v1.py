@@ -17,10 +17,10 @@ import random
 from typing import List, Optional
 from dataclasses import dataclass
 
-from aspire.core import TrainingItem, StudentResponse, TokenVector, TokenDimension
-from aspire.student import MockStudent, GenerationStats, TokenStats
-from aspire.professors import ProfessorEnsemble
-from aspire.critic import LearnedCriticV1, TextFeatureExtractorV1
+from scalarscope.core import TrainingItem, StudentResponse, TokenVector, TokenDimension
+from scalarscope.student import MockStudent, GenerationStats, TokenStats
+from scalarscope.professors import ProfessorEnsemble
+from scalarscope.critic import LearnedCriticV1, TextFeatureExtractorV1
 
 
 @dataclass

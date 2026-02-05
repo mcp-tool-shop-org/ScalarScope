@@ -19,10 +19,10 @@ from dataclasses import dataclass
 from typing import List, Optional
 import time
 
-from aspire.core import TrainingItem
-from aspire.student import ONNXStudentV2, GenerationConfig, CacheConfig
-from aspire.governor import TokenPool, GovernorConfig
-from aspire.governor.metrics import GPUMetrics, MockGPUMetrics
+from scalarscope.core import TrainingItem
+from scalarscope.student import ONNXStudentV2, GenerationConfig, CacheConfig
+from scalarscope.governor import TokenPool, GovernorConfig
+from scalarscope.governor.metrics import GPUMetrics, MockGPUMetrics
 
 
 @dataclass

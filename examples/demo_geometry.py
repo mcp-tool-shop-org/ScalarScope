@@ -20,11 +20,11 @@ import argparse
 import random
 from typing import List
 
-from aspire.core import TrainingItem, StudentResponse, TokenVector, TokenDimension
-from aspire.student import MockStudent
-from aspire.professors import ProfessorEnsemble
-from aspire.critic import LearnedCriticV0
-from aspire.geometry import (
+from scalarscope.core import TrainingItem, StudentResponse, TokenVector, TokenDimension
+from scalarscope.student import MockStudent
+from scalarscope.professors import ProfessorEnsemble
+from scalarscope.critic import LearnedCriticV0
+from scalarscope.geometry import (
     StateVector,
     StateSnapshot,
     TrainingTrajectory,
@@ -135,7 +135,7 @@ This is "conscience formation" made visible.
         )
 
         # Update student
-        from aspire.student import TrainingSignal
+        from scalarscope.student import TrainingSignal
         signal = TrainingSignal(
             item=item,
             response=response,

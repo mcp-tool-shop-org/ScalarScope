@@ -20,8 +20,8 @@ This module addresses Schola AI's critique about "professor bias" by implementin
    - Ensures student learns substance, not style
 
 Usage:
-    from aspire.professors import ProfessorEnsemble
-    from aspire.professors.adversarial import (
+    from scalarscope.professors import ProfessorEnsemble
+    from scalarscope.professors.adversarial import (
         RotatingSelector,
         AdversarialProfessor,
         HoldoutManager,

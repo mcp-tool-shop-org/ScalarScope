@@ -1,4 +1,4 @@
-"""Demo: ASPIRE training loop with Governor resource protection.
+"""Demo: ScalarScope training loop with Governor resource protection.
 
 This demonstrates the governor protecting against GPU memory exhaustion
 during parallel/rapid inference cycles.
@@ -14,17 +14,17 @@ Usage:
 import argparse
 import time
 
-from aspire.core import TrainingItem
-from aspire.student import MockStudent
-from aspire.professors import ProfessorEnsemble
-from aspire.critic import HeuristicCritic
-from aspire.engine import AspireEngine
-from aspire.governor import (
+from scalarscope.core import TrainingItem
+from scalarscope.student import MockStudent
+from scalarscope.professors import ProfessorEnsemble
+from scalarscope.critic import HeuristicCritic
+from scalarscope.engine import ScalarScopeEngine
+from scalarscope.governor import (
     TokenPool,
     GovernorConfig,
     ThrottleLevel,
 )
-from aspire.governor.metrics import GPUMetrics, MockGPUMetrics
+from scalarscope.governor.metrics import GPUMetrics, MockGPUMetrics
 
 
 def create_test_items(count: int = 20):
@@ -142,7 +142,7 @@ def main():
     professors = ProfessorEnsemble()
     critic = HeuristicCritic()
 
-    engine = AspireEngine(
+    engine = ScalarScopeEngine(
         student=student,
         professors=professors,
         critic=critic,

@@ -1,0 +1,212 @@
+{
+  "experiment": "aspire_full_suite",
+  "total_runs": 27,
+  "statistics": {
+    "total_failures": 9,
+    "expected_failures": 8,
+    "unexpected_failures": 1,
+    "falsifications": 1,
+    "failure_rate": 0.3333333333333333,
+    "by_category": {
+      "scalar_partial_conscience": {
+        "count": 1,
+        "rate": 0.037037037037037035,
+        "expected_count": 1
+      },
+      "random_matches_full": {
+        "count": 1,
+        "rate": 0.037037037037037035,
+        "expected_count": 0
+      },
+      "early_holdout_failure": {
+        "count": 3,
+        "rate": 0.1111111111111111,
+        "expected_count": 3
+      },
+      "seed_variance": {
+        "count": 4,
+        "rate": 0.14814814814814814,
+        "expected_count": 4
+      }
+    }
+  },
+  "failures": [
+    {
+      "category": "scalar_partial_conscience",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": 2,
+      "seed": 2588,
+      "description": "SCALAR_REWARD achieved conscience=0.500, higher than expected. Real judgment may leak through scalar collapse.",
+      "expected": true,
+      "observed_value": 0.5,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 20,
+      "sample_size": 30,
+      "interpretation": "SCALAR averaging doesn't fully destroy multi-dimensional signal. Document as boundary condition, not falsification.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.500503"
+    },
+    {
+      "category": "random_matches_full",
+      "experiment": "aspire_full_suite",
+      "condition": "random_professors",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "RANDOM_PROFESSORS (mean=0.533) matches FULL_ASPIRE (mean=0.400\u00b10.141). Random evaluation should not achieve comparable conscience.",
+      "expected": false,
+      "observed_value": 0.5333333333333333,
+      "expected_range": [
+        0.0,
+        0.25857864376269046
+      ],
+      "training_cycles": 0,
+      "sample_size": 3,
+      "interpretation": "If random evaluation matches structured evaluation, conscience formation may be an artifact of training dynamics, not meaningful judgment learning.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:14:39.500594"
+    },
+    {
+      "category": "early_holdout_failure",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 0,
+      "seed": 77,
+      "description": "Holdout transfer failed (corr=-0.290) with only 20 training cycles. Expected with short training.",
+      "expected": true,
+      "observed_value": -0.29009080138395704,
+      "expected_range": [
+        0.3,
+        1.0
+      ],
+      "training_cycles": 20,
+      "sample_size": 30,
+      "interpretation": "Transfer learning requires sufficient training. Report minimum training threshold for reliable transfer.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.712815"
+    },
+    {
+      "category": "early_holdout_failure",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 1,
+      "seed": 1077,
+      "description": "Holdout transfer failed (corr=0.270) with only 20 training cycles. Expected with short training.",
+      "expected": true,
+      "observed_value": 0.2697272060362486,
+      "expected_range": [
+        0.3,
+        1.0
+      ],
+      "training_cycles": 20,
+      "sample_size": 30,
+      "interpretation": "Transfer learning requires sufficient training. Report minimum training threshold for reliable transfer.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.712828"
+    },
+    {
+      "category": "early_holdout_failure",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 2,
+      "seed": 2077,
+      "description": "Holdout transfer failed (corr=0.101) with only 20 training cycles. Expected with short training.",
+      "expected": true,
+      "observed_value": 0.10067656580766883,
+      "expected_range": [
+        0.3,
+        1.0
+      ],
+      "training_cycles": 20,
+      "sample_size": 30,
+      "interpretation": "Transfer learning requires sufficient training. Report minimum training threshold for reliable transfer.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.712832"
+    },
+    {
+      "category": "seed_variance",
+      "experiment": "aspire_full_suite",
+      "condition": "full_aspire",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "High variance in full_aspire: CV=0.35, std=0.141, mean=0.400. Results may not be reliable.",
+      "expected": true,
+      "observed_value": 0.3535533905932738,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 0,
+      "sample_size": 3,
+      "interpretation": "High run-to-run variance suggests sensitivity to initialization. Report confidence intervals and recommend larger n_runs.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.771442"
+    },
+    {
+      "category": "seed_variance",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "High variance in scalar_reward: CV=0.37, std=0.125, mean=0.333. Results may not be reliable.",
+      "expected": true,
+      "observed_value": 0.3741657386773941,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 0,
+      "sample_size": 3,
+      "interpretation": "High run-to-run variance suggests sensitivity to initialization. Report confidence intervals and recommend larger n_runs.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.771473"
+    },
+    {
+      "category": "seed_variance",
+      "experiment": "aspire_full_suite",
+      "condition": "random_professors",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "High variance in random_professors: CV=0.39, std=0.205, mean=0.533. Results may not be reliable.",
+      "expected": true,
+      "observed_value": 0.3852758751855611,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 0,
+      "sample_size": 3,
+      "interpretation": "High run-to-run variance suggests sensitivity to initialization. Report confidence intervals and recommend larger n_runs.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.771496"
+    },
+    {
+      "category": "seed_variance",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "High variance in holdout_one: CV=1.18, std=0.070, mean=0.059. Results may not be reliable.",
+      "expected": true,
+      "observed_value": 1.1766450623131652,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 0,
+      "sample_size": 3,
+      "interpretation": "High run-to-run variance suggests sensitivity to initialization. Report confidence intervals and recommend larger n_runs.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:39.771537"
+    }
+  ],
+  "boundary_conditions": [
+    "High variance (CV=1.18) in holdout_one makes conclusions uncertain",
+    "Training duration (20 cycles) may be insufficient for stable conscience formation",
+    "Sample size (30 items) may be too small for reliable evaluation",
+    "Number of runs (3) may be too small for statistical significance"
+  ]
+}

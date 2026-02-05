@@ -3,7 +3,7 @@
 Shows how the student revises its response when the critic detects
 misalignment (negative surprise, high disagreement, overconfidence).
 
-This demonstrates the core ASPIRE concept: internalization of judgment
+This demonstrates the core ScalarScope concept: internalization of judgment
 through active repair under pressure.
 
 Output shows 3-way comparison per cycle:
@@ -19,12 +19,12 @@ import argparse
 from typing import List
 import random
 
-from aspire.core import TrainingItem, TokenDimension
-from aspire.student import MockStudent
-from aspire.professors import ProfessorEnsemble
-from aspire.critic import LearnedCriticV0
-from aspire.engine import (
-    RevisionAspireEngine,
+from scalarscope.core import TrainingItem, TokenDimension
+from scalarscope.student import MockStudent
+from scalarscope.professors import ProfessorEnsemble
+from scalarscope.critic import LearnedCriticV0
+from scalarscope.engine import (
+    RevisionScalarScopeEngine,
     RevisionConfig,
     RevisionTrigger,
     RevisionCycleResult,
@@ -281,7 +281,7 @@ Watch for:
             on_cycle_complete(result)
 
     # Create engine
-    engine = RevisionAspireEngine(
+    engine = RevisionScalarScopeEngine(
         student=student,
         professors=professors,
         critic=critic,

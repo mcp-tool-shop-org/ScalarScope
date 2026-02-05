@@ -1,0 +1,13 @@
+{
+  "experiment": "correlated_holdout_transfer",
+  "n_runs": 10,
+  "n_items": 100,
+  "n_training_cycles": 50,
+  "runs": [
+    {
+      "run_idx": 0,
+      "seed": 42,
+      "holdout_professor": "Professor Rigor",
+      "holdout_idx": 0,
+      "transfer_correlation": 0.9379998233624247,
+      "transfer_success": 

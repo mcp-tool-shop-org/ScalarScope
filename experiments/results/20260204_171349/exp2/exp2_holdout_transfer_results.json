@@ -1,0 +1,232 @@
+{
+  "experiment": "exp2_holdout_transfer",
+  "description": "Does the student learn to judge, or just who trained it?",
+  "version": "1.0",
+  "config": {
+    "n_training_items": 30,
+    "n_training_cycles": 20,
+    "n_runs_per_condition": 3,
+    "base_seed": 42
+  },
+  "conditions": {
+    "all_professors": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.07800227105838252,
+          "std": 0.021011907884118955,
+          "min": 0.05463278347186848,
+          "max": 0.10558200452932964
+        },
+        "surprise_stability": {
+          "mean": 0.5045077797782538,
+          "std": 0.030290867014026772
+        },
+        "generalization_min": {
+          "mean": 0.01775092202667623,
+          "std": 0.005778795125512486
+        }
+      },
+      "runs": [
+        {
+          "condition": "all_professors",
+          "run_idx": 0,
+          "seed": 407,
+          "start_time": "2026-02-04T17:13:49.985994",
+          "end_time": "2026-02-04T17:13:50.015402",
+          "duration_seconds": 0.029408,
+          "final_conscience_score": 0.07379202517394944,
+          "final_surprise_stability": 0.5457851163335408,
+          "final_generalization_min": 0.019881899666216393,
+          "final_generalization_mean": 0.23271881746902054,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "all_professors",
+          "run_idx": 1,
+          "seed": 1407,
+          "start_time": "2026-02-04T17:13:50.015847",
+          "end_time": "2026-02-04T17:13:50.042298",
+          "duration_seconds": 0.026451,
+          "final_conscience_score": 0.05463278347186848,
+          "final_surprise_stability": 0.4937908579128284,
+          "final_generalization_min": 0.02351814206787814,
+          "final_generalization_mean": 0.16643051686097618,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "all_professors",
+          "run_idx": 2,
+          "seed": 2407,
+          "start_time": "2026-02-04T17:13:50.042681",
+          "end_time": "2026-02-04T17:13:50.069172",
+          "duration_seconds": 0.026491,
+          "final_conscience_score": 0.10558200452932964,
+          "final_surprise_stability": 0.4739473650883923,
+          "final_generalization_min": 0.009852724345934155,
+          "final_generalization_mean": 0.34537153220047606,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    },
+    "holdout_one": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.04970276204505734,
+          "std": 0.05687291132839072,
+          "min": -0.02943792820902184,
+          "max": 0.101697093007223
+        },
+        "surprise_stability": {
+          "mean": 0.4657231757673767,
+          "std": 0.016726678322917205
+        },
+        "generalization_min": {
+          "mean": -0.07513092360648306,
+          "std": 0.10863657806789077
+        }
+      },
+      "runs": [
+        {
+          "condition": "holdout_one",
+          "run_idx": 0,
+          "seed": 790,
+          "start_time": "2026-02-04T17:13:50.069531",
+          "end_time": "2026-02-04T17:13:50.091503",
+          "duration_seconds": 0.021972,
+          "final_conscience_score": 0.07684912133697085,
+          "final_surprise_stability": 0.4788884008546145,
+          "final_generalization_min": -0.16905160919457327,
+          "final_generalization_mean": 0.2568962161508646,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "holdout_one",
+          "run_idx": 1,
+          "seed": 1790,
+          "start_time": "2026-02-04T17:13:50.091843",
+          "end_time": "2026-02-04T17:13:50.113168",
+          "duration_seconds": 0.021325,
+          "final_conscience_score": 0.101697093007223,
+          "final_surprise_stability": 0.44212056651755083,
+          "final_generalization_min": -0.13346558428102007,
+          "final_generalization_mean": 0.3011905521321912,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "holdout_one",
+          "run_idx": 2,
+          "seed": 2790,
+          "start_time": "2026-02-04T17:13:50.113551",
+          "end_time": "2026-02-04T17:13:50.134904",
+          "duration_seconds": 0.021353,
+          "final_conscience_score": -0.02943792820902184,
+          "final_surprise_stability": 0.47616055992996476,
+          "final_generalization_min": 0.07712442265614416,
+          "final_generalization_mean": 0.017661823777014623,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    },
+    "single_professor": {
+      "n_runs": 3,
+      "statistics": {
+        "conscience": {
+          "mean": 0.23901793625645437,
+          "std": 0.011666314027965006,
+          "min": 0.22814802835185433,
+          "max": 0.2552017576424785
+        },
+        "surprise_stability": {
+          "mean": 0.20302969281241268,
+          "std": 0.12322152671223481
+        },
+        "generalization_min": {
+          "mean": 0.6829083893041553,
+          "std": 0.03333232579418572
+        }
+      },
+      "runs": [
+        {
+          "condition": "single_professor",
+          "run_idx": 0,
+          "seed": 321,
+          "start_time": "2026-02-04T17:13:50.135233",
+          "end_time": "2026-02-04T17:13:50.144031",
+          "duration_seconds": 0.008798,
+          "final_conscience_score": 0.23370402277503025,
+          "final_surprise_stability": 0.3675162333536448,
+          "final_generalization_min": 0.6677257793572293,
+          "final_generalization_mean": 0.6677257793572293,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "single_professor",
+          "run_idx": 1,
+          "seed": 1321,
+          "start_time": "2026-02-04T17:13:50.144194",
+          "end_time": "2026-02-04T17:13:50.153747",
+          "duration_seconds": 0.009553,
+          "final_conscience_score": 0.2552017576424785,
+          "final_surprise_stability": 0.07095219280435416,
+          "final_generalization_min": 0.72914787897851,
+          "final_generalization_mean": 0.72914787897851,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        },
+        {
+          "condition": "single_professor",
+          "run_idx": 2,
+          "seed": 2321,
+          "start_time": "2026-02-04T17:13:50.153919",
+          "end_time": "2026-02-04T17:13:50.162943",
+          "duration_seconds": 0.009024,
+          "final_conscience_score": 0.22814802835185433,
+          "final_surprise_stability": 0.17062065227923906,
+          "final_generalization_min": 0.6518515095767267,
+          "final_generalization_mean": 0.6518515095767267,
+          "failure_modes_detected": [],
+          "warning_count": 0,
+          "trajectory_length": 20,
+          "extra_data": {}
+        }
+      ]
+    }
+  },
+  "falsification": {
+    "results": {
+      "holdout_correlation": false,
+      "transfer_ratio": false,
+      "ensemble_benefit": false
+    },
+    "details": {
+      "holdout_correlation": "Mean holdout correlation = -0.075 (threshold = 0.2) *** THEORY FALSIFIED: No holdout transfer ***",
+      "transfer_ratio": "Mean transfer ratio = -0.367 (threshold = 0.5) *** WARNING: Low transfer ratio suggests memorization ***",
+      "ensemble_benefit": "All-prof generalization = 0.018, Single-prof = 0.683"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-"""Demo: Run the ASPIRE training loop with a real ONNX model.
+"""Demo: Run the ScalarScope training loop with a real ONNX model.
 
 Requirements:
 1. Export a model to ONNX (see scripts/export_model.py)
@@ -12,11 +12,11 @@ Example:
 import argparse
 from pathlib import Path
 
-from aspire.core import TrainingItem
-from aspire.student import ONNXStudentV1, GenerationConfig
-from aspire.professors import ProfessorEnsemble
-from aspire.critic import HeuristicCritic
-from aspire.engine import AspireEngine
+from scalarscope.core import TrainingItem
+from scalarscope.student import ONNXStudentV1, GenerationConfig
+from scalarscope.professors import ProfessorEnsemble
+from scalarscope.critic import HeuristicCritic
+from scalarscope.engine import ScalarScopeEngine
 
 
 def create_test_items():
@@ -132,7 +132,7 @@ def main():
     critic = HeuristicCritic()
 
     # Create engine
-    engine = AspireEngine(
+    engine = ScalarScopeEngine(
         student=student,
         professors=professors,
         critic=critic,

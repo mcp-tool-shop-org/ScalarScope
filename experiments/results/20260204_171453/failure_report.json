@@ -1,0 +1,397 @@
+{
+  "experiment": "aspire_full_suite",
+  "total_runs": 90,
+  "statistics": {
+    "total_failures": 19,
+    "expected_failures": 8,
+    "unexpected_failures": 11,
+    "falsifications": 11,
+    "failure_rate": 0.2111111111111111,
+    "by_category": {
+      "scalar_partial_conscience": {
+        "count": 5,
+        "rate": 0.05555555555555555,
+        "expected_count": 5
+      },
+      "random_matches_full": {
+        "count": 1,
+        "rate": 0.011111111111111112,
+        "expected_count": 0
+      },
+      "no_transfer_to_holdout": {
+        "count": 10,
+        "rate": 0.1111111111111111,
+        "expected_count": 0
+      },
+      "seed_variance": {
+        "count": 3,
+        "rate": 0.03333333333333333,
+        "expected_count": 3
+      }
+    }
+  },
+  "failures": [
+    {
+      "category": "scalar_partial_conscience",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": 2,
+      "seed": 2738,
+      "description": "SCALAR_REWARD achieved conscience=0.500, higher than expected. Real judgment may leak through scalar collapse.",
+      "expected": true,
+      "observed_value": 0.5,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "SCALAR averaging doesn't fully destroy multi-dimensional signal. Document as boundary condition, not falsification.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:56.476876"
+    },
+    {
+      "category": "scalar_partial_conscience",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": 3,
+      "seed": 3738,
+      "description": "SCALAR_REWARD achieved conscience=0.500, higher than expected. Real judgment may leak through scalar collapse.",
+      "expected": true,
+      "observed_value": 0.5,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "SCALAR averaging doesn't fully destroy multi-dimensional signal. Document as boundary condition, not falsification.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:56.476890"
+    },
+    {
+      "category": "scalar_partial_conscience",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": 4,
+      "seed": 4738,
+      "description": "SCALAR_REWARD achieved conscience=0.500, higher than expected. Real judgment may leak through scalar collapse.",
+      "expected": true,
+      "observed_value": 0.5,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "SCALAR averaging doesn't fully destroy multi-dimensional signal. Document as boundary condition, not falsification.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:56.476895"
+    },
+    {
+      "category": "scalar_partial_conscience",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": 6,
+      "seed": 6738,
+      "description": "SCALAR_REWARD achieved conscience=0.500, higher than expected. Real judgment may leak through scalar collapse.",
+      "expected": true,
+      "observed_value": 0.5,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "SCALAR averaging doesn't fully destroy multi-dimensional signal. Document as boundary condition, not falsification.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:56.476898"
+    },
+    {
+      "category": "scalar_partial_conscience",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": 8,
+      "seed": 8738,
+      "description": "SCALAR_REWARD achieved conscience=0.500, higher than expected. Real judgment may leak through scalar collapse.",
+      "expected": true,
+      "observed_value": 0.5,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "SCALAR averaging doesn't fully destroy multi-dimensional signal. Document as boundary condition, not falsification.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:14:56.476901"
+    },
+    {
+      "category": "random_matches_full",
+      "experiment": "aspire_full_suite",
+      "condition": "random_professors",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "RANDOM_PROFESSORS (mean=0.420) matches FULL_ASPIRE (mean=0.510\u00b10.187). Random evaluation should not achieve comparable conscience.",
+      "expected": false,
+      "observed_value": 0.42000000000000004,
+      "expected_range": [
+        0.0,
+        0.323184583077306
+      ],
+      "training_cycles": 0,
+      "sample_size": 10,
+      "interpretation": "If random evaluation matches structured evaluation, conscience formation may be an artifact of training dynamics, not meaningful judgment learning.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:14:56.476987"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 0,
+      "seed": 256,
+      "description": "No transfer to holdout professor (corr=0.189) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": 0.18870492356874963,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946378"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 1,
+      "seed": 1256,
+      "description": "No transfer to holdout professor (corr=-0.163) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": -0.16323856158669184,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946389"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 2,
+      "seed": 2256,
+      "description": "No transfer to holdout professor (corr=0.041) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": 0.04119734555138075,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946393"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 3,
+      "seed": 3256,
+      "description": "No transfer to holdout professor (corr=-0.181) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": -0.18131035670393963,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946400"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 4,
+      "seed": 4256,
+      "description": "No transfer to holdout professor (corr=-0.182) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": -0.18179964220965145,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946404"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 5,
+      "seed": 5256,
+      "description": "No transfer to holdout professor (corr=0.027) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": 0.02739859317125542,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946406"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 6,
+      "seed": 6256,
+      "description": "No transfer to holdout professor (corr=-0.284) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": -0.28408549703215946,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946409"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 7,
+      "seed": 7256,
+      "description": "No transfer to holdout professor (corr=0.147) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": 0.1470992056807412,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946412"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 8,
+      "seed": 8256,
+      "description": "No transfer to holdout professor (corr=-0.463) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": -0.46336337455908594,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946414"
+    },
+    {
+      "category": "no_transfer_to_holdout",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": 9,
+      "seed": 9256,
+      "description": "No transfer to holdout professor (corr=-0.076) despite 50 training cycles. Theory predicts transfer should occur.",
+      "expected": false,
+      "observed_value": -0.07577079066568548,
+      "expected_range": [
+        0.4,
+        1.0
+      ],
+      "training_cycles": 50,
+      "sample_size": 100,
+      "interpretation": "Conscience may not generalize to unseen professors. This is a potential falsification if consistent.",
+      "falsifies_theory": true,
+      "timestamp": "2026-02-04T17:15:02.946417"
+    },
+    {
+      "category": "seed_variance",
+      "experiment": "aspire_full_suite",
+      "condition": "full_aspire",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "High variance in full_aspire: CV=0.37, std=0.187, mean=0.510. Results may not be reliable.",
+      "expected": true,
+      "observed_value": 0.36630473906410593,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 0,
+      "sample_size": 10,
+      "interpretation": "High run-to-run variance suggests sensitivity to initialization. Report confidence intervals and recommend larger n_runs.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:15:03.846272"
+    },
+    {
+      "category": "seed_variance",
+      "experiment": "aspire_full_suite",
+      "condition": "scalar_reward",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "High variance in scalar_reward: CV=0.45, std=0.162, mean=0.360. Results may not be reliable.",
+      "expected": true,
+      "observed_value": 0.45133546692422,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 0,
+      "sample_size": 10,
+      "interpretation": "High run-to-run variance suggests sensitivity to initialization. Report confidence intervals and recommend larger n_runs.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:15:03.846313"
+    },
+    {
+      "category": "seed_variance",
+      "experiment": "aspire_full_suite",
+      "condition": "holdout_one",
+      "run_idx": -1,
+      "seed": -1,
+      "description": "High variance in holdout_one: CV=0.33, std=0.029, mean=0.088. Results may not be reliable.",
+      "expected": true,
+      "observed_value": 0.3315033832039747,
+      "expected_range": [
+        0.0,
+        0.3
+      ],
+      "training_cycles": 0,
+      "sample_size": 10,
+      "interpretation": "High run-to-run variance suggests sensitivity to initialization. Report confidence intervals and recommend larger n_runs.",
+      "falsifies_theory": false,
+      "timestamp": "2026-02-04T17:15:03.846403"
+    }
+  ],
+  "boundary_conditions": []
+}

@@ -1,6 +1,6 @@
-"""ASPIRE training engine."""
+"""ScalarScope training engine."""
 
-from .loop import AspireEngine, CycleResult, TrainingMetrics
+from .loop import ScalarScopeEngine, CycleResult, TrainingMetrics
 from .revision import (
     RevisionEngine,
     RevisionConfig,
@@ -8,10 +8,10 @@ from .revision import (
     RevisionResult,
     RevisionTrigger,
 )
-from .revision_engine import RevisionAspireEngine, RevisionCycleResult, RevisionMetrics
+from .revision_engine import RevisionScalarScopeEngine, RevisionCycleResult, RevisionMetrics
 
 __all__ = [
-    "AspireEngine",
+    "ScalarScopeEngine",
     "CycleResult",
     "TrainingMetrics",
     "RevisionEngine",
@@ -19,7 +19,7 @@ __all__ = [
     "RevisionDecision",
     "RevisionResult",
     "RevisionTrigger",
-    "RevisionAspireEngine",
+    "RevisionScalarScopeEngine",
     "RevisionCycleResult",
     "RevisionMetrics",
 ]

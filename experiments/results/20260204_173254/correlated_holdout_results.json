@@ -1,0 +1,134 @@
+{
+  "experiment": "correlated_holdout_transfer",
+  "n_runs": 10,
+  "n_items": 100,
+  "n_training_cycles": 50,
+  "runs": [
+    {
+      "run_idx": 0,
+      "seed": 42,
+      "holdout_professor": "Professor Rigor",
+      "holdout_idx": 0,
+      "transfer_correlation": 0.9379998233624247,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 1,
+      "seed": 1042,
+      "holdout_professor": "Professor Nuance",
+      "holdout_idx": 1,
+      "transfer_correlation": 0.9295689483549482,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 2,
+      "seed": 2042,
+      "holdout_professor": "Professor Holistic",
+      "holdout_idx": 2,
+      "transfer_correlation": 0.9183960667873854,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 3,
+      "seed": 3042,
+      "holdout_professor": "Professor Pragmatist",
+      "holdout_idx": 3,
+      "transfer_correlation": 0.9514601071527369,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 4,
+      "seed": 4042,
+      "holdout_professor": "Professor Theorist",
+      "holdout_idx": 4,
+      "transfer_correlation": 0.8263314195056215,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 5,
+      "seed": 5042,
+      "holdout_professor": "Professor Rigor",
+      "holdout_idx": 0,
+      "transfer_correlation": 0.9228132087500301,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 6,
+      "seed": 6042,
+      "holdout_professor": "Professor Nuance",
+      "holdout_idx": 1,
+      "transfer_correlation": 0.9303937873105669,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 7,
+      "seed": 7042,
+      "holdout_professor": "Professor Holistic",
+      "holdout_idx": 2,
+      "transfer_correlation": 0.9292484933216671,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 8,
+      "seed": 8042,
+      "holdout_professor": "Professor Pragmatist",
+      "holdout_idx": 3,
+      "transfer_correlation": 0.9248190096378577,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    },
+    {
+      "run_idx": 9,
+      "seed": 9042,
+      "holdout_professor": "Professor Theorist",
+      "holdout_idx": 4,
+      "transfer_correlation": 0.8660218159932775,
+      "transfer_success": true,
+      "n_items_evaluated": 100
+    }
+  ],
+  "by_holdout_professor": {
+    "Professor Rigor": [
+      0.9379998233624247,
+      0.9228132087500301
+    ],
+    "Professor Nuance": [
+      0.9295689483549482,
+      0.9303937873105669
+    ],
+    "Professor Holistic": [
+      0.9183960667873854,
+      0.9292484933216671
+    ],
+    "Professor Pragmatist": [
+      0.9514601071527369,
+      0.9248190096378577
+    ],
+    "Professor Theorist": [
+      0.8263314195056215,
+      0.8660218159932775
+    ]
+  },
+  "summary": {
+    "mean_transfer_correlation": 0.9137052680176516,
+    "std_transfer_correlation": 0.03594966287943332,
+    "min_transfer_correlation": 0.8263314195056215,
+    "max_transfer_correlation": 0.9514601071527369,
+    "transfer_success_rate": 1.0,
+    "by_holdout_mean": {
+      "Professor Rigor": 0.9304065160562274,
+      "Professor Nuance": 0.9299813678327575,
+      "Professor Holistic": 0.9238222800545263,
+      "Professor Pragmatist": 0.9381395583952973,
+      "Professor Theorist": 0.8461766177494495
+    }
+  }
+}
