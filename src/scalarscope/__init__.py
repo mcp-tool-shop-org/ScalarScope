@@ -1,3 +1,3 @@
-"""ASPIRE - Adversarial Student-Professor Internalized Reasoning Engine"""
+"""ScalarScope - Evaluative Internalization Training Framework"""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"

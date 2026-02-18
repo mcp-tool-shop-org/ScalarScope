@@ -1,130 +1,182 @@
-# ScalarScope
+<p align="center">
+  <img src="https://raw.githubusercontent.com/mcp-tool-shop-org/scalarscope/main/logo.png" alt="ScalarScope logo" width="200" />
+</p>
 
-**Evaluative Internalization Training Framework** - A Python engine for training models to internalize scalar evaluations.
+<h1 align="center">ScalarScope</h1>
 
-## Overview
+<p align="center">
+  <strong>Evaluative Internalization Training Framework</strong><br>
+  Train models to internalize scalar evaluations — developing genuine judgment, not just reward prediction.
+</p>
 
-ScalarScope is a training framework that explores whether language models can learn to internalize evaluative criteria - developing an internal "conscience" that predicts how external evaluators would rate outputs, without needing those evaluators at inference time.
+<p align="center">
+  <a href="https://pypi.org/project/scalarscope/"><img src="https://img.shields.io/pypi/v/scalarscope?color=blue" alt="PyPI version"></a>
+  <a href="https://pypi.org/project/scalarscope/"><img src="https://img.shields.io/pypi/pyversions/scalarscope" alt="Python versions"></a>
+  <a href="https://github.com/mcp-tool-shop-org/scalarscope/blob/main/LICENSE"><img src="https://img.shields.io/github/license/mcp-tool-shop-org/scalarscope" alt="License"></a>
+  <a href="https://github.com/mcp-tool-shop-org/scalarscope/issues"><img src="https://img.shields.io/github/issues/mcp-tool-shop-org/scalarscope" alt="Issues"></a>
+</p>
 
-The framework implements the core training loop, token-level scalar feedback, and geometry export for visualization.
+---
+
+## Why ScalarScope?
+
+Standard reward models collapse to a single signal. ScalarScope asks a harder question:
+
+> **Can a model learn to predict how _multiple independent evaluators_ would rate its output — and internalize that judgment so evaluators aren't needed at inference time?**
+
+Most RLHF setups treat evaluation as a black box. ScalarScope cracks it open:
+
+- **Token-level scalar feedback** instead of sequence-level rewards — fine-grained learning signals that localize exactly _where_ quality changes.
+- **Multi-evaluator geometry** — train against several evaluators simultaneously and analyze whether their criteria converge on a shared latent manifold.
+- **Internalization detection** — measure whether the model develops genuine evaluative intuition (Path B) or just memorizes surface patterns (Path A).
+- **Governor-controlled budgets** — adaptive token budgeting prevents runaway training costs.
+
+If you're researching alignment, evaluation dynamics, or interpretable training signals, ScalarScope gives you the engine and the instrumentation.
 
 ## Installation
 
 ```bash
-# Basic installation
-pip install -e .
+# Core (NumPy + Pydantic only)
+pip install scalarscope
 
-# With PyTorch support
-pip install -e ".[torch]"
+# With PyTorch backend
+pip install "scalarscope[torch]"
 
-# With ONNX runtime (for inference)
-pip install -e ".[onnx]"
+# With ONNX Runtime (GPU inference)
+pip install "scalarscope[onnx]"
 
-# Development
-pip install -e ".[dev]"
+# Development (adds pytest + ruff)
+pip install "scalarscope[dev]"
 ```
+
+**Requirements:** Python 3.11+
 
 ## Quick Start
 
 ```python
-from scalarscope.engine import ScalarScopeEngine, TrainingMetrics
+from scalarscope.engine import ScalarScopeEngine
 from scalarscope.governor import TokenPool, GovernorConfig
 
-# Configure the token governor
-governor_config = GovernorConfig(
+# Set up token budget governance
+config = GovernorConfig(
     max_tokens_per_cycle=1000,
-    budget_strategy="adaptive"
+    budget_strategy="adaptive",
 )
-pool = TokenPool(governor_config)
+pool = TokenPool(config)
 
 # Create the training engine
 engine = ScalarScopeEngine(
     model=your_model,
     evaluators=your_evaluators,
-    token_pool=pool
+    token_pool=pool,
 )
 
 # Run a training cycle
 result = engine.run_cycle(prompt="Your training prompt")
-print(f"Metrics: {result.metrics}")
+print(f"Loss:  {result.metrics.loss:.4f}")
+print(f"Tokens used: {result.metrics.tokens_used}")
 ```
 
 ## Architecture
 
 ```
 src/scalarscope/
-├── engine/
-│   ├── loop.py              # ScalarScopeEngine - core training loop
-│   ├── revision.py          # Revision decision logic
-│   └── revision_engine.py   # RevisionScalarScopeEngine - with self-correction
-├── governor/
-│   ├── token_pool.py        # Token budget management
-│   └── config.py            # Governor configuration
-├── evaluators/
-│   ├── base.py              # Evaluator protocol
-│   └── scalar_head.py       # Learned scalar predictor
-├── export/
-│   └── geometry_export.py   # Export trajectory data for visualization
-└── critics/
-    └── learned_critic.py    # LearnedCritic V1 with logit-derived features
+├── engine/           # Core training loop + revision engine
+├── governor/         # Token budget management
+├── critic/           # Learned critic with logit-derived features
+├── evaluators/       # Evaluator protocol + scalar head
+├── export/           # Geometry export for visualization
+├── geometry/         # Trajectory & eigenvalue analysis
+├── conscience/       # Internalized evaluator probes
+├── analysis/         # Post-hoc analysis utilities
+├── adversarial/      # Adversarial robustness testing
+├── professors/       # Multi-professor evaluation setups
+├── student/          # Student model abstractions
+└── core/             # Shared types and base classes
 ```
 
 ## Key Components
 
 ### ScalarScopeEngine
 
-The core training loop that:
-1. Generates responses from the model
-2. Collects scalar feedback from evaluators
-3. Updates model parameters based on evaluative signals
-4. Tracks geometry for visualization
+The core loop: generate, evaluate, update, export.
+
+```python
+engine = ScalarScopeEngine(model, evaluators, token_pool)
+result = engine.run_cycle(prompt="...")
+```
 
 ### RevisionScalarScopeEngine
 
-Extended engine with self-correction capabilities:
-- Detects when outputs need revision
-- Applies targeted corrections
-- Learns from revision patterns
+Extended engine with self-correction. Detects when outputs need revision, applies targeted corrections, and learns from revision patterns.
 
-### TokenPool & Governor
+### TokenPool and Governor
 
-Budget management for training:
-- Controls token expenditure per cycle
-- Adaptive budgeting based on task difficulty
-- Prevents runaway token usage
+Adaptive token budgeting prevents runaway usage:
+
+```python
+config = GovernorConfig(max_tokens_per_cycle=2000, budget_strategy="adaptive")
+pool = TokenPool(config)
+remaining = pool.remaining  # check budget mid-cycle
+```
 
 ### Geometry Export
 
-Exports training dynamics for visualization in [ScalarScope-Desktop](https://github.com/mcp-tool-shop-org/ScalarScope-Desktop):
-- State vector trajectories
+Export training dynamics for visualization in [ScalarScope-Desktop](https://github.com/mcp-tool-shop-org/ScalarScope-Desktop) (WinUI 3 / .NET MAUI):
+
+- State-vector trajectories
 - Eigenvalue spectra
-- Evaluator geometry
+- Evaluator geometry overlays
 
-## Scientific Background
+### Learned Critic
 
-ScalarScope explores a key question in AI alignment:
-
-> **Can models internalize evaluative criteria, developing genuine judgment rather than just predicting rewards?**
-
-The framework tests this through:
-- **Multiple evaluators** with potentially different criteria
-- **Token-level feedback** for fine-grained learning signals
-- **Geometry analysis** to detect shared evaluative structure
-
-Key finding: Internalization succeeds when evaluators share a latent evaluative manifold (Path B), and fails when evaluators are orthogonal (Path A).
+Token-level scalar predictor that learns evaluative features from logits — the core of the internalization hypothesis.
 
 ## Examples
 
-See the `examples/` directory for:
-- `basic_training.py` - Simple training loop
-- `revision_demo.py` - Self-correction capabilities
-- `geometry_export_demo.py` - Exporting for visualization
+| Script | What it shows |
+|--------|---------------|
+| `demo_loop.py` | Basic training loop |
+| `demo_revision.py` | Self-correction capabilities |
+| `demo_geometry.py` | Geometry export for visualization |
+| `demo_governor.py` | Token budget management |
+| `demo_learned_critic.py` | Learned critic training |
+| `demo_onnx_loop.py` | ONNX Runtime inference |
+| `bench_kv_cache.py` | KV cache benchmarking |
 
-## Related
+Run any example:
 
-- [ScalarScope-Desktop](https://github.com/mcp-tool-shop-org/ScalarScope-Desktop) - .NET MAUI visualization app
-- `docs/RESULTS_AND_LIMITATIONS.md` - Experimental results and known limitations
+```bash
+cd examples
+python demo_loop.py
+```
+
+## Scientific Background
+
+ScalarScope explores a central question in AI alignment: whether models can internalize evaluative criteria rather than merely predicting rewards.
+
+**Key findings from our experiments:**
+
+- **Path B (success):** When evaluators share a latent evaluative manifold, internalization succeeds. The model develops genuine judgment.
+- **Path A (failure):** When evaluators are orthogonal, the model resorts to surface-level pattern matching.
+
+See `docs/RESULTS_AND_LIMITATIONS.md` for full experimental results and known limitations.
+
+## Related Projects
+
+- [ScalarScope-Desktop](https://github.com/mcp-tool-shop-org/ScalarScope-Desktop) — WinUI 3 visualization app for geometry export data
+
+## Contributing
+
+Contributions are welcome. Please open an issue first to discuss what you'd like to change.
+
+```bash
+git clone https://github.com/mcp-tool-shop-org/scalarscope.git
+cd scalarscope
+pip install -e ".[dev]"
+pytest
+```
 
 ## License
 
-MIT License - See LICENSE file for details.
+[MIT](LICENSE)
